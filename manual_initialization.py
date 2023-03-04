@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	# define a joint trajectory variable for sending the control commands
 	pos_cmd = JointTrajectory()
 	pos_cmd_point = JointTrajectoryPoint()
-	# just a quick solution to complete the message template
+	# create message template
 	pos_cmd.joint_names.append('elbow_joint')
 	pos_cmd.joint_names.append('shoulder_lift_joint')
 	pos_cmd.joint_names.append('shoulder_pan_joint')
@@ -33,9 +33,9 @@ if __name__ == '__main__':
 		pos_cmd_point.positions.append(0.0)
 	# set the ideal time to destination
 	pos_cmd_point.time_from_start = rospy.Duration(1.0) # here one second 
-	# just change the value of the command for the second joint
+	# change values for elbow, shoulder lift and wrist joint 1 and 2 so
+	# tooltip is facing down
 	pos_cmd_point.positions[1] = -math.pi/4
-	# just change the value of the command for the elbow joint
 	pos_cmd_point.positions[0] = math.pi/4
 	pos_cmd_point.positions[3] = -math.pi/2
 	pos_cmd_point.positions[4] = -math.pi/2
